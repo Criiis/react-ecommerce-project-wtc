@@ -1,0 +1,33 @@
+.header {
+  background: black;
+  color: white;
+  padding: 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+.nav--icon {
+  text-align: center;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.nav--icon:last-child {
+  margin-right: 0rem;
+}
+
+.nav--icon p {
+  margin: 0;
+}
