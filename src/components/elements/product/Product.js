@@ -1,7 +1,21 @@
+import { useContext } from 'react'
+import WishlistContext from '../../storage/WishlistContext'
 import { transformToCurrency } from '../helpers'
 import './product.css'
+
 export default function Product({ product }) {
-  const { title, price, image } = product
+  const wishlistCTX = useContext(WishlistContext)
+  const { id, title, price, image } = product
+
+  const addWishlistHandler = (e) => {
+    e.preventDefault()
+    wishlistCTX.addToWishlist(id)
+  }
+
+  const removeWishlistHandler = (e) => {
+    e.preventDefault()
+    wishlistCTX.removeFromWishlist(id)
+  }
 
   return (
     <div className="product-card">
@@ -11,7 +25,8 @@ export default function Product({ product }) {
       <p>{title}</p>
       <p>{transformToCurrency(price)}</p>
 
-      <button>Add Wishlist</button>
+      <button onClick={addWishlistHandler}>Add Wishlist</button>
+      <button onClick={removeWishlistHandler}>Remove Wishlist</button>
       <button>Add Cart</button>
     </div>
   )

@@ -1,17 +1,25 @@
+import { useContext } from 'react'
+import WishlistContext from '../../storage/WishlistContext'
+
 export function WishlistIcon() {
+  const { wishlistProducts } = useContext(WishlistContext)
+
   return (
-    <svg
-      width="25"
-      height="23"
-      viewBox="0 0 25 23"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12.5 3.3835C9.22083 -2.24358 0 -0.600873 0 6.45017C0 11.3054 5.80313 16.27 12.5 22.9168C19.1979 16.27 25 11.3054 25 6.45017C25 -0.624831 15.7552 -2.20192 12.5 3.3835Z"
-        fill="white"
-      />
-    </svg>
+    <>
+      <svg
+        width="25"
+        height="23"
+        viewBox="0 0 25 23"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.5 3.3835C9.22083 -2.24358 0 -0.600873 0 6.45017C0 11.3054 5.80313 16.27 12.5 22.9168C19.1979 16.27 25 11.3054 25 6.45017C25 -0.624831 15.7552 -2.20192 12.5 3.3835Z"
+          fill="white"
+        />
+      </svg>
+      <p>{wishlistProducts.length}</p>
+    </>
   )
 }
 

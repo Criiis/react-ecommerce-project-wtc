@@ -3,5 +3,7 @@
   margin: 1rem auto 0 auto;
   grid-gap: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
 }
