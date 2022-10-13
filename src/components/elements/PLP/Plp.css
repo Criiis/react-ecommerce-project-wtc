@@ -1,0 +1,7 @@
+.plp-container {
+  max-width: 1024px;
+  margin: 1rem auto 0 auto;
+  grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
