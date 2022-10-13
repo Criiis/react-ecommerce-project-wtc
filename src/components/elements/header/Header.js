@@ -6,7 +6,7 @@ export default function Header() {
     <div className="header">
       <h1>React Shop</h1>
 
-      <div class="nav">
+      <div className="nav">
         <div className="nav--icon">
           <WishlistIcon />
           <p>Wishlist</p>
