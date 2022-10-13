@@ -1,4 +1,4 @@
-export const productApi = [
+export const fakeAPI = [
   {
     id: 1,
     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
