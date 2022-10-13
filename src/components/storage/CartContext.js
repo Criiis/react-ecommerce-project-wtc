@@ -1,3 +1,2 @@
-export default function CartContext() {
-  return <div>CartContext</div>
-}
+//context will be the default value for the state
+const cartContext = React.createContext({})
