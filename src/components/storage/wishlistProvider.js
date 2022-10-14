@@ -9,8 +9,22 @@ const ADDWISHLIST = 'ADD_TO_WISHLIST'
 const REMOVEWISHLIST = 'REMOVE_TO_WISHLIST'
 
 function wishlistReducer(state, action) {
-  console.log(state, action)
-  return state
+  switch (action.type) {
+    case ADDWISHLIST: {
+      const stateProducts = state.wishlistProducts
+      if (stateProducts.includes(action.payload))
+        return { wishlistProducts: stateProducts }
+      const wishlistProducts = [...stateProducts, action.payload]
+      return { wishlistProducts }
+    }
+    case REMOVEWISHLIST: {
+      console.log('remove')
+      return state
+    }
+    default:
+      console.log('default')
+      return state
+  }
 }
 
 export default function WishlistProvider(props) {
@@ -20,8 +34,8 @@ export default function WishlistProvider(props) {
   )
 
   //state action to add items to wishlist
-  const addProductToWishListHandler = (id) => {
-    dispatchWishlist({ type: ADDWISHLIST, payload: id })
+  const addProductToWishListHandler = (item) => {
+    dispatchWishlist({ type: ADDWISHLIST, payload: item })
   }
 
   //state action to remove items from wishlist
