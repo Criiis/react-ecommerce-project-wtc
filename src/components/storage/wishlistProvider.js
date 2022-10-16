@@ -18,11 +18,17 @@ function wishlistReducer(state, action) {
       return { wishlistProducts }
     }
     case REMOVEWISHLIST: {
-      console.log('remove')
-      return state
+      let stateProducts = state.wishlistProducts
+      const indexOfProduct = stateProducts.findIndex(
+        (el) => el.id === action.payload
+      )
+
+      if (indexOfProduct === -1) return { wishlistProducts: stateProducts }
+
+      stateProducts.splice(indexOfProduct, 1)
+      return { wishlistProducts: stateProducts }
     }
     default:
-      console.log('default')
       return state
   }
 }
