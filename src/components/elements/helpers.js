@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {*} value should be a number
+ * @returns return the number as currency
+ */
 export const transformToCurrency = (value) => {
   const valueToNumber = typeof value === 'string' ? +value.trim() : +value
 
