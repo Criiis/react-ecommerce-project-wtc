@@ -1,3 +1,22 @@
-export default function Wishlist() {
-  return <div>Wishlist</div>
+import { useContext } from 'react'
+import WishlistContext from '../../storage/WishlistContext'
+import Modal from '../modal/Modal'
+import Product from '../product/Product'
+
+export default function Wishlist(props) {
+  console.log(props)
+  const { wishlistProducts } = useContext(WishlistContext)
+  console.log(wishlistProducts)
+
+  const outputWishedProducts = wishlistProducts?.map((product) => (
+    <Product kry={product.id} product={product} />
+  ))
+
+  return (
+    <Modal wishlistHandlerFunction={props.wishlistHandler}>
+      <h1>wishlistProducts</h1>
+      {wishlistProducts.length === 0 && <h4>Add products to your wishlist</h4>}
+      {outputWishedProducts}
+    </Modal>
+  )
 }
