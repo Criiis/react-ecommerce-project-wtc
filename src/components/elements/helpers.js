@@ -8,7 +8,7 @@ export const transformToCurrency = (value) => {
 
   if (isNaN(valueToNumber))
     return console.warn(
-      `Something is worng with ur transformToCurrency value ${valueToNumber}.`
+      `Something is wrong with ur transformToCurrency value ${valueToNumber}.`
     )
 
   return new Intl.NumberFormat('default', {
