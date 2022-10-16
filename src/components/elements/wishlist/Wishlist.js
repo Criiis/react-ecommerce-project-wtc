@@ -3,8 +3,7 @@ import WishlistContext from '../../storage/WishlistContext'
 import Modal from '../modal/Modal'
 import Product from '../product/Product'
 
-export default function Wishlist(props) {
-  console.log(props)
+export default function Wishlist({ wishlistHandler }) {
   const { wishlistProducts } = useContext(WishlistContext)
   console.log(wishlistProducts)
 
@@ -13,7 +12,7 @@ export default function Wishlist(props) {
   ))
 
   return (
-    <Modal wishlistHandlerFunction={props.wishlistHandler}>
+    <Modal wishlistHandlerFunction={wishlistHandler}>
       <h1>wishlistProducts</h1>
       {wishlistProducts.length === 0 && <h4>Add products to your wishlist</h4>}
       {outputWishedProducts}

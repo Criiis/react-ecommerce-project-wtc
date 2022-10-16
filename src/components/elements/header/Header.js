@@ -1,7 +1,7 @@
 import './Header.css'
 import { WishlistIcon, CartIcon } from './icon'
 
-export default function Header({ wishlistHandler }) {
+export default function Header({ wishlistHandler, cartHandler }) {
   return (
     <div className="header">
       <h1>React Shop</h1>
@@ -11,7 +11,7 @@ export default function Header({ wishlistHandler }) {
           <WishlistIcon />
           <p>Wishlist</p>
         </div>
-        <div className="nav--icon">
+        <div className="nav--icon" onClick={cartHandler}>
           <CartIcon />
           <p>Cart</p>
         </div>

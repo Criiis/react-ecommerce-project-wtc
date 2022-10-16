@@ -3,31 +3,30 @@ import './Modal.css'
 
 const portalElement = document.querySelector('#overlays') //'../../../../public/index.html'
 
-function Backdrop(props) {
+function Backdrop({ wishlistHandlerFunction, children }) {
   return (
-    <div className="backdrop" onClick={props.wishlistHandlerFunction}>
-      {props.children}
+    <div className="backdrop" onClick={wishlistHandlerFunction}>
+      {children}
     </div>
   )
 }
-function ModalOverlay(props) {
+function ModalOverlay({ children }) {
   return (
     <div className="modal">
-      <div className="content">{props.children}</div>
+      <div className="content">{children}</div>
     </div>
   )
 }
 
-export default function Modal(props) {
-  console.log(props)
+export default function Modal({ wishlistHandlerFunction, children }) {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop wishlistHandlerFunction={props.wishlistHandlerFunction} />,
+        <Backdrop wishlistHandlerFunction={wishlistHandlerFunction} />,
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay>{props.children}</ModalOverlay>,
+        <ModalOverlay>{children}</ModalOverlay>,
         portalElement
       )}
     </>

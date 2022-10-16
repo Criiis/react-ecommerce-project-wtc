@@ -12,9 +12,11 @@ function wishlistReducer(state, action) {
   switch (action.type) {
     case ADDWISHLIST: {
       const stateProducts = state.wishlistProducts
+
       if (stateProducts.includes(action.payload))
         return { wishlistProducts: stateProducts }
-      const wishlistProducts = [...stateProducts, action.payload]
+
+      const wishlistProducts = [action.payload, ...stateProducts]
       return { wishlistProducts }
     }
     case REMOVEWISHLIST: {
