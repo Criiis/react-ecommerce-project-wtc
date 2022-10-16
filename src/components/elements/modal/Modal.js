@@ -3,13 +3,14 @@ import './Modal.css'
 
 const portalElement = document.querySelector('#overlays') //'../../../../public/index.html'
 
-function Backdrop({ wishlistHandlerFunction, children }) {
+function Backdrop({ clickHandler, children }) {
   return (
-    <div className="backdrop" onClick={wishlistHandlerFunction}>
+    <div className="backdrop" onClick={clickHandler}>
       {children}
     </div>
   )
 }
+
 function ModalOverlay({ children }) {
   return (
     <div className="modal">
@@ -18,11 +19,11 @@ function ModalOverlay({ children }) {
   )
 }
 
-export default function Modal({ wishlistHandlerFunction, children }) {
+export default function Modal({ clickHandler, children }) {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop wishlistHandlerFunction={wishlistHandlerFunction} />,
+        <Backdrop clickHandler={clickHandler} />,
         portalElement
       )}
       {ReactDOM.createPortal(
