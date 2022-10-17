@@ -26,6 +26,10 @@ export function WishlistIcon() {
 
 export function CartIcon() {
   const { products } = useContext(CartContext)
+  const numberOfItems = products.reduce(
+    (previousValue, currentValue) => previousValue + currentValue.quantity,
+    0
+  )
 
   return (
     <>
@@ -43,7 +47,7 @@ export function CartIcon() {
           fill="white"
         />
       </svg>
-      <p>{products.length}</p>
+      <p>{numberOfItems}</p>
     </>
   )
 }
