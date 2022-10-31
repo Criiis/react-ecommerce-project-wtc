@@ -4,7 +4,7 @@ import wishlistReducer from './wishlist'
 
 const store = configureStore({
   reducer: {
-    cartReducer,
+    // cartReducer,
     wishlistReducer,
   },
 })
