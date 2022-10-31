@@ -7,18 +7,24 @@ const wishlistSlice = createSlice({
   initialState: wishlistState,
   reducers: {
     addToWishlist(state, action) {
-      console.log(state, action)
+      const newItem = action.payload
+      const existingItemIndex = state.products.find(
+        (item) => item.id === newItem.id
+      )
 
-      // if (!stateProducts.includes(action.payload)) state.push(action.payload)
+      if (!existingItemIndex) state.products.push(newItem)
     },
     removeFromWishlist(state, action) {
-      console.log(state, action)
-      // const indexOfProduct = state.findIndex((el) => el.id === action.payload)
+      console.log(state.products, action.payload)
+      const productId = action.payload
+      const existingItemIndex = state.products.find(
+        (product) => product.id === productId
+      )
 
-      // if (indexOfProduct === -1) return { wishlistProducts: stateProducts }
-
-      // state.splice(indexOfProduct, 1)
-      // return { wishlistProducts: stateProducts }
+      if (existingItemIndex)
+        state.products = state.products.filter(
+          (product) => product.id !== productId
+        )
     },
   },
 })

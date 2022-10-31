@@ -1,10 +1,11 @@
-import { useContext } from 'react'
-import WishlistContext from '../../storage/WishlistContext'
+import { useSelector } from 'react-redux'
 import Modal from '../modal/Modal'
 import Product from '../product/Product'
 
 export default function Wishlist({ wishlistHandler }) {
-  const { wishlistProducts } = useContext(WishlistContext)
+  const wishlistProducts = useSelector(
+    (state) => state.wishlistReducer.products
+  )
 
   const outputWishedProducts = wishlistProducts?.map((product) => (
     <Product key={product.id} product={product} />

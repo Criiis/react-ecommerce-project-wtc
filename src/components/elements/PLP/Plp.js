@@ -16,7 +16,6 @@ export default function Plp() {
       setProductApi(products)
     } catch (error) {
       throw new Error(`${error.message}, try again.`)
-    } finally {
     }
   }
 

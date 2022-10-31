@@ -1,9 +1,11 @@
 import { useContext } from 'react'
-import WishlistContext from '../../storage/WishlistContext'
+import { useSelector } from 'react-redux'
 import CartContext from '../../storage/CartContext'
 
 export function WishlistIcon() {
-  const { wishlistProducts } = useContext(WishlistContext)
+  const wishlistProducts = useSelector(
+    (state) => state.wishlistReducer.products
+  )
 
   return (
     <>

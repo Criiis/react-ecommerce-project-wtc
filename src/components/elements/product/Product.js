@@ -1,26 +1,28 @@
 import { useContext } from 'react'
-import WishlistContext from '../../storage/WishlistContext'
 import CartContext from '../../storage/CartContext'
 import { transformToCurrency } from '../helpers'
 import './product.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { wishlistAction } from '../../../redux/wishlist'
 
 export default function Product({ product }) {
-  const { addProductToCart } = useContext(CartContext)
-
-  const { wishlistProducts, addToWishlist, removeFromWishlist } =
-    useContext(WishlistContext)
   const { id, title, price, image } = product
+  const dispatch = useDispatch()
+  const wishlistProducts = useSelector(
+    (state) => state.wishlistReducer.products
+  )
+  const { addProductToCart } = useContext(CartContext)
 
   //add to wishlist functionality
   const addWishlistHandler = (e) => {
     e.preventDefault()
-    addToWishlist(product)
+    dispatch(wishlistAction.addToWishlist(product))
   }
 
   //remove to wishlist functionality
   const removeWishlistHandler = (e) => {
     e.preventDefault()
-    removeFromWishlist(id)
+    dispatch(wishlistAction.removeFromWishlist(id))
   }
 
   //select if it should be add btn or the remove button
