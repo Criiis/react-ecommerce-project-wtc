@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const wishlistState = { products: [] }
+const wishlistState = { products: [], wishlistPopUpController: false }
 
 const wishlistSlice = createSlice({
   name: 'wishlist',
@@ -25,6 +25,9 @@ const wishlistSlice = createSlice({
         state.products = state.products.filter(
           (product) => product.id !== productId
         )
+    },
+    wishlistUiController(state) {
+      state.wishlistPopUpController = !state.wishlistPopUpController
     },
   },
 })
