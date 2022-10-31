@@ -8,3 +8,5 @@ const store = configureStore({
     wishlistReducer,
   },
 })
+
+export default store
