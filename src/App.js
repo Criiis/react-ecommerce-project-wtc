@@ -1,27 +1,28 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { wishlistAction } from './redux/wishlist'
+import { cartActions } from './redux/cart'
 import Cart from './components/elements/cart/Cart'
 import Header from './components/elements/header/Header'
 import Plp from './components/elements/PLP/Plp'
 import Wishlist from './components/elements/wishlist/Wishlist'
 import CartProvider from './components/storage/CartProvider'
-import { wishlistAction } from './redux/wishlist'
 
 function App() {
-  // wishlistUiController
   const dispatch = useDispatch()
   const wishlistController = useSelector(
     (state) => state.wishlistReducer.wishlistPopUpController
   )
 
-  const [cartController, setCartController] = useState(false)
+  const cartController = useSelector(
+    (state) => state.cartReducer.cartPopUpController
+  )
 
   const wishlistHandlerFunction = () => {
     dispatch(wishlistAction.wishlistUiController())
   }
 
   const cartHandlerFunction = () => {
-    setCartController(!cartController)
+    dispatch(cartActions.cartUiController())
   }
 
   return (

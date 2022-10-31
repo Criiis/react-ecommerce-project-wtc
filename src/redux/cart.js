@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const cartState = {
   products: [],
   totalAmount: 0,
+  cartPopUpController: false,
 }
 
 const cartSlice = createSlice({
@@ -12,6 +13,10 @@ const cartSlice = createSlice({
     addToCart(state, action) {},
     removeFromCart(state, action) {},
     clearCart(state) {},
+
+    cartUiController(state) {
+      state.cartPopUpController = !state.cartPopUpController
+    },
   },
 })
 
