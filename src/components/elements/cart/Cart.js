@@ -1,20 +1,17 @@
-import { useContext } from 'react'
-import CartContext from '../../storage/CartContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { cartActions } from '../../../redux/cart'
 import { transformToCurrency } from '../helpers'
 import Modal from '../modal/Modal'
 
 export default function Cart({ cartHandler }) {
-  const {
-    totalAmount,
-    products,
-    clearProductsFromCart,
-    removeProductFromCart,
-  } = useContext(CartContext)
+  const { products, totalAmount } = useSelector((state) => state.cartReducer)
+  const dispatch = useDispatch()
 
-  // function removeProduct(e) {
-  //   e.preventDefault()
-  //   removeProductFromCart(product.id)
-  // }
+  // clear all products from the cart
+  function clearCart(e) {
+    e.preventDefault()
+    dispatch(cartActions.clearCart())
+  }
 
   //product card for cart modal
   const productsOutput = products?.map((product) => {
@@ -27,7 +24,7 @@ export default function Cart({ cartHandler }) {
         <p>
           {transformToCurrency(product.price)} x{product.quantity}
         </p>
-        <button onClick={() => removeProductFromCart(product.id)}>
+        <button onClick={() => console.log('remove items!')}>
           Remove Item
         </button>
       </div>
@@ -39,14 +36,7 @@ export default function Cart({ cartHandler }) {
       <h1>Cart</h1>
       {productsOutput}
       <p>total: {transformToCurrency(totalAmount)}</p>
-      <button onClick={clearProductsFromCart}>Clear All</button>
+      <button onClick={clearCart}>Clear All</button>
     </Modal>
   )
 }
-
-//
-// addProductToCart
-// clearProductsFromCart
-// products
-// removeProductFromCart
-// totalAmount

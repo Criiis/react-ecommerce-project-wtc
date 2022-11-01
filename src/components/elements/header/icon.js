@@ -1,6 +1,4 @@
-import { useContext } from 'react'
 import { useSelector } from 'react-redux'
-import CartContext from '../../storage/CartContext'
 
 export function WishlistIcon() {
   const wishlistProducts = useSelector(
@@ -27,7 +25,8 @@ export function WishlistIcon() {
 }
 
 export function CartIcon() {
-  const { products } = useContext(CartContext)
+  const products = useSelector((state) => state.cartReducer.products)
+
   const numberOfItems = products.reduce(
     (previousValue, currentValue) => previousValue + currentValue.quantity,
     0

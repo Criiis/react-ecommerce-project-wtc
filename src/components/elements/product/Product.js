@@ -1,17 +1,16 @@
-import { useContext } from 'react'
-import CartContext from '../../storage/CartContext'
-import { transformToCurrency } from '../helpers'
 import './product.css'
+import { transformToCurrency } from '../helpers'
 import { useSelector, useDispatch } from 'react-redux'
 import { wishlistAction } from '../../../redux/wishlist'
+import { cartActions } from '../../../redux/cart'
 
 export default function Product({ product }) {
   const { id, title, price, image } = product
+
   const dispatch = useDispatch()
   const wishlistProducts = useSelector(
     (state) => state.wishlistReducer.products
   )
-  const { addProductToCart } = useContext(CartContext)
 
   //add to wishlist functionality
   const addWishlistHandler = (e) => {
@@ -25,6 +24,12 @@ export default function Product({ product }) {
     dispatch(wishlistAction.removeFromWishlist(id))
   }
 
+  //cart State
+  const addProductToCartHandler = (e) => {
+    e.preventDefault()
+    dispatch(cartActions.addToCart({ product, quantity: 1 }))
+  }
+
   //select if it should be add btn or the remove button
   //wonder if there is any way to improve this functionality
   const wishlistButtonController =
@@ -33,12 +38,6 @@ export default function Product({ product }) {
     ) : (
       <button onClick={removeWishlistHandler}>Remove Wishlist</button>
     )
-
-  //cart State
-  const addProductToCartHandler = (e) => {
-    e.preventDefault()
-    addProductToCart(product, 1)
-  }
 
   return (
     <div className="product-card">
