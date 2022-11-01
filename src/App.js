@@ -5,7 +5,6 @@ import Cart from './components/elements/cart/Cart'
 import Header from './components/elements/header/Header'
 import Plp from './components/elements/PLP/Plp'
 import Wishlist from './components/elements/wishlist/Wishlist'
-import CartProvider from './components/storage/CartProvider'
 
 function App() {
   const dispatch = useDispatch()
@@ -26,7 +25,7 @@ function App() {
   }
 
   return (
-    <CartProvider>
+    <>
       <Header
         wishlistHandler={wishlistHandlerFunction}
         cartHandler={cartHandlerFunction}
@@ -36,7 +35,7 @@ function App() {
         <Wishlist wishlistHandler={wishlistHandlerFunction} />
       )}
       {cartController && <Cart cartHandler={cartHandlerFunction} />}
-    </CartProvider>
+    </>
   )
 }
 
