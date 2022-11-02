@@ -7,7 +7,6 @@ export default function Plp() {
   const [productApi, setProductApi] = useState(fakeAPI)
 
   const fetchProductsAPI = async () => {
-    console.log('test 1 fetch')
     try {
       const response = await fetch(`https://fakestoreapi.com/products`)
       if (!response.ok) throw new Error('Could not fetch!')
@@ -21,7 +20,6 @@ export default function Plp() {
 
   useEffect(() => {
     fetchProductsAPI()
-    console.log('test 2 fetch')
   }, [])
 
   const outputData = productApi?.map((product) => (

@@ -15,7 +15,6 @@ const wishlistSlice = createSlice({
       if (!existingItemIndex) state.products.push(newItem)
     },
     removeFromWishlist(state, action) {
-      console.log(state.products, action.payload)
       const productId = action.payload
       const existingItemIndex = state.products.find(
         (product) => product.id === productId

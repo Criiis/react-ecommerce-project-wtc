@@ -28,7 +28,20 @@ const cartSlice = createSlice({
     },
 
     removeFromCart(state, action) {
+      const productId = action.payload
+      const existingItemIndex = state.products.find(
+        (product) => product.id === productId
+      )
 
+      state.totalAmount = state.totalAmount - existingItemIndex.price
+
+      if (existingItemIndex.quantity === 1)
+        state.products = state.products.filter(
+          (product) => product.id !== productId
+        )
+      else existingItemIndex.quantity = existingItemIndex.quantity - 1
+
+      if (state.products.length === 0) state.totalAmount = 0
     },
 
     clearCart(state) {
@@ -44,4 +57,3 @@ const cartSlice = createSlice({
 
 export const cartActions = cartSlice.actions
 export default cartSlice.reducer
-

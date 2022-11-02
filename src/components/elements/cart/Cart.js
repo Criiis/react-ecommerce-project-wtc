@@ -13,23 +13,31 @@ export default function Cart({ cartHandler }) {
     dispatch(cartActions.clearCart())
   }
 
+  //remove products
+  const removeProductFromCartHandler = (e, id) => {
+    e.preventDefault()
+    dispatch(cartActions.removeFromCart(id))
+  }
+
   //product card for cart modal
-  const productsOutput = products?.map((product) => {
-    return (
-      <div className="product-card" key={product.id}>
-        <div className="product-card--images">
-          <img src={product.image} alt={product.title} />
+  const productsOutput = products?.map(
+    ({ id, image, title, price, quantity }) => {
+      return (
+        <div className="product-card" key={id}>
+          <div className="product-card--images">
+            <img src={image} alt={title} />
+          </div>
+          <p>{title}</p>
+          <p>
+            {transformToCurrency(price)} x{quantity}
+          </p>
+          <button onClick={(e) => removeProductFromCartHandler(e, id)}>
+            Remove Item
+          </button>
         </div>
-        <p>{product.title}</p>
-        <p>
-          {transformToCurrency(product.price)} x{product.quantity}
-        </p>
-        <button onClick={() => console.log('remove items!')}>
-          Remove Item
-        </button>
-      </div>
-    )
-  })
+      )
+    }
+  )
 
   return (
     <Modal clickHandler={cartHandler}>
