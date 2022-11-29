@@ -1,6 +1,7 @@
 .product-card {
-  width: 300px;
+  max-width: 300px;
   text-align: center;
+  width: 100%;
 }
 .product-card img {
   width: 100%;

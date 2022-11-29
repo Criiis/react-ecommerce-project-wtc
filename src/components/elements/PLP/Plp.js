@@ -1,5 +1,5 @@
-import './Plp.css'
 import Product from '../product/Product'
+import styles from './Plp.module.css'
 import { fakeAPI } from '../products-api'
 import { useEffect, useState } from 'react'
 
@@ -26,5 +26,5 @@ export default function Plp() {
     <Product key={product.id} product={product} />
   ))
 
-  return <div className="plp-container">{outputData}</div>
+  return <div className={styles.plpContainer}>{outputData}</div>
 }
