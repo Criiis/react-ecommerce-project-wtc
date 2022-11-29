@@ -18,16 +18,33 @@
   align-content: center;
 }
 
-.nav--icon {
+.navIcon {
+  position: relative;
   text-align: center;
   margin-right: 1rem;
   cursor: pointer;
 }
 
-.nav--icon:last-child {
+.iconCounter {
+  background-color: #ffba3c;
+  border-radius: 50%;
+  width: auto;
+  min-width: 1.4em;
+  height: 1.25em;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 0.1rem;
+  position: absolute;
+  top: -0.5rem;
+  font-weight: bold;
+  right: -0.4em;
+  color: #333;
+}
+
+.navIcon:last-child {
   margin-right: 0rem;
 }
 
-.nav--icon p {
+.navIcon p {
   margin: 0;
 }
