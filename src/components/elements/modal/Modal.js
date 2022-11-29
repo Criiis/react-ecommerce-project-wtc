@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom'
-import './Modal.css'
+import styles from './Modal.module.css'
 
 const portalElement = document.querySelector('#overlays') //'../../../../public/index.html'
 
 function Backdrop({ clickHandler, children }) {
   return (
-    <div className="backdrop" onClick={clickHandler}>
+    <div className={styles.backdrop} onClick={clickHandler}>
       {children}
     </div>
   )
@@ -13,7 +13,7 @@ function Backdrop({ clickHandler, children }) {
 
 function ModalOverlay({ children }) {
   return (
-    <div className="modal">
+    <div className={styles.modal}>
       <div className="content">{children}</div>
     </div>
   )
