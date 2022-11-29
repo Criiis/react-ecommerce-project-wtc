@@ -1,4 +1,3 @@
-import './Header.css'
 import styles from './Header.module.css'
 import { WishlistIcon, CartIcon } from './icon'
 
