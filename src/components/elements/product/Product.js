@@ -74,7 +74,7 @@ export default function Product({ product }) {
       <p className={styles.ProductPrice}>{transformToCurrency(price)}</p>
       {wishlistButtonController}
       <button className="btn" onClick={addProductToCartHandler}>
-        Add Cart
+        Add to cart
       </button>
     </div>
   )
