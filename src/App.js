@@ -5,6 +5,8 @@ import Cart from './components/elements/cart/Cart'
 import Header from './components/elements/header/Header'
 import Plp from './components/elements/PLP/Plp'
 import Wishlist from './components/elements/wishlist/Wishlist'
+import './App.css'
+import Footer from './components/elements/footer/Footer'
 
 function App() {
   const dispatch = useDispatch()
@@ -35,6 +37,7 @@ function App() {
         <Wishlist wishlistHandler={wishlistHandlerFunction} />
       )}
       {cartController && <Cart cartHandler={cartHandlerFunction} />}
+      <Footer />
     </>
   )
 }
