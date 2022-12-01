@@ -5,7 +5,7 @@ import Cart from './components/elements/cart/Cart'
 import Header from './components/elements/header/Header'
 import Plp from './components/elements/PLP/Plp'
 import Wishlist from './components/elements/wishlist/Wishlist'
-import './App.css'
+import './main.css'
 import Footer from './components/elements/footer/Footer'
 
 function App() {
