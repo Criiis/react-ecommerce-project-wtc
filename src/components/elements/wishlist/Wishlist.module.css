@@ -1,0 +1,12 @@
+.popupTitle {
+  margin-top: 0;
+}
+
+.productContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
