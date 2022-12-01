@@ -42,11 +42,19 @@ export default function Product({ product }) {
   //wonder if there is any way to improve this functionality
   const wishlistButtonController =
     wishlistProducts.findIndex((el) => el.id === id) === -1 ? (
-      <button className={styles.wishlistButton} onClick={addWishlistHandler}>
+      <button
+        aria-label="Click to add to wishlist"
+        className={styles.wishlistButton}
+        onClick={addWishlistHandler}
+      >
         {wishlistIcon}
       </button>
     ) : (
-      <button className={styles.wishlistButton} onClick={removeWishlistHandler}>
+      <button
+        aria-label="Product added to wishlist click to remove from wishlist"
+        className={styles.wishlistButton}
+        onClick={removeWishlistHandler}
+      >
         {wishlistedIcon}
       </button>
     )

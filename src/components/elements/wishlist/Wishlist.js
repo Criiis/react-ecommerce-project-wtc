@@ -14,7 +14,7 @@ export default function Wishlist({ wishlistHandler }) {
 
   return (
     <Modal clickHandler={wishlistHandler}>
-      <h1 className={styles.popupTitle}>Wishlist</h1>
+      <h1 className="title">Wishlist</h1>
       {wishlistProducts.length === 0 && (
         <p>Your wishlist is currently empty!</p>
       )}

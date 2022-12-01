@@ -26,5 +26,5 @@ export default function Plp() {
     <Product key={product.id} product={product} />
   ))
 
-  return <div className={styles.plpContainer}>{outputData}</div>
+  return <main className={styles.plpContainer}>{outputData}</main>
 }

@@ -8,6 +8,7 @@ export function WishlistIcon(props) {
   return (
     <>
       <svg
+        aria-hidden="true"
         width="25"
         height="23"
         viewBox="0 0 25 23"
@@ -20,7 +21,9 @@ export function WishlistIcon(props) {
         />
       </svg>
       {wishlistProducts.length > 0 && (
-        <span className={props.className}>{wishlistProducts.length}</span>
+        <span className={props.className} aria-hidden="true">
+          {wishlistProducts.length}
+        </span>
       )}
     </>
   )
@@ -37,6 +40,7 @@ export function CartIcon(props) {
   return (
     <>
       <svg
+        aria-hidden="true"
         width="23"
         height="23"
         viewBox="0 0 23 23"
@@ -66,7 +70,9 @@ export function CartIcon(props) {
         </defs>
       </svg>
       {numberOfItems > 0 && (
-        <span className={props.className}>{numberOfItems}</span>
+        <span className={props.className} aria-hidden="true">
+          {numberOfItems}
+        </span>
       )}
     </>
   )

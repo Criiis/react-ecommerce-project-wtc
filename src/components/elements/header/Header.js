@@ -6,16 +6,27 @@ export default function Header({ wishlistHandler, cartHandler }) {
     <div className={styles.header}>
       <h1>React Shop</h1>
 
-      <div className={styles.nav}>
-        <div className={styles.navIcon} onClick={wishlistHandler}>
+      <nav className={styles.nav}>
+        <li
+          className={styles.navIcon}
+          onClick={wishlistHandler}
+          aria-label="open wishlist"
+          role="button"
+        >
           <WishlistIcon className={styles.iconCounter} />
-          <p>Wishlist</p>
-        </div>
-        <div className={styles.navIcon} onClick={cartHandler}>
+          <p aria-hidden="true">Wishlist</p>
+        </li>
+
+        <li
+          className={styles.navIcon}
+          onClick={cartHandler}
+          aria-label="open cart"
+          role="button"
+        >
           <CartIcon className={styles.iconCounter} />
-          <p>Cart</p>
-        </div>
-      </div>
+          <p aria-hidden="true">Cart</p>
+        </li>
+      </nav>
     </div>
   )
 }

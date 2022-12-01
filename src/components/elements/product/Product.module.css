@@ -38,7 +38,7 @@
   right: 0;
   padding: 0.5rem;
   background: black;
-  border: 1px solid white;
+  border: 0.063rem solid white;
   display: flex;
   border-radius: 50%;
   z-index: 2;
