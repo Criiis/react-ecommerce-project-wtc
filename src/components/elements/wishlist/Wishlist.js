@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import Modal from '../modal/Modal'
 import Product from '../product/Product'
+import styles from './Wishlist.module.css'
 
 export default function Wishlist({ wishlistHandler }) {
   const wishlistProducts = useSelector(
@@ -13,9 +14,11 @@ export default function Wishlist({ wishlistHandler }) {
 
   return (
     <Modal clickHandler={wishlistHandler}>
-      <h1>wishlistProducts</h1>
-      {wishlistProducts.length === 0 && <h4>Add products to your wishlist</h4>}
-      {outputWishedProducts}
+      <h1 className={styles.popupTitle}>Wishlist</h1>
+      {wishlistProducts.length === 0 && (
+        <p>Your wishlist is currently empty!</p>
+      )}
+      <div className={styles.productContainer}>{outputWishedProducts}</div>
     </Modal>
   )
 }
