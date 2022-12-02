@@ -1,0 +1,25 @@
+.productCard {
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.productCardDetails {
+  flex-basis: 80%;
+}
+.productCardDetails * {
+  margin: 0;
+}
+.productCardImages {
+  flex-basis: 20%;
+}
+.productCardImages img {
+  width: 100%;
+  object-fit: contain;
+  min-height: 100px;
+  height: auto;
+}
