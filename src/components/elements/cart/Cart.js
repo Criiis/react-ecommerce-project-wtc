@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../../../redux/cart'
 import { transformToCurrency } from '../helpers'
-import styles from './Cart.module.css'
+// import styles from './Cart.module.css'
 import './Cart.css'
 import Modal from '../modal/Modal'
+import { useEffect, useRef } from 'react'
 
 export default function Cart({ cartHandler }) {
   const { products, totalAmount } = useSelector((state) => state.cartReducer)
+  const sectionTitle = useRef()
   const dispatch = useDispatch()
 
   // clear all products from the cart
@@ -46,15 +48,28 @@ export default function Cart({ cartHandler }) {
     }
   )
 
+  useEffect(() => {
+    sectionTitle.current.focus()
+  }, [])
+
   return (
     <Modal clickHandler={cartHandler}>
-      <h1 className="title">Cart</h1>
+      <h1 tabIndex="0" className="margin-top-reset" ref={sectionTitle}>
+        Cart
+      </h1>
       <div className="product-container">
         {products.length === 0 && <p>Your cart is currently empty!</p>}
         {productsOutput}
       </div>
       <p>Total: {transformToCurrency(totalAmount)}</p>
-      {products.length > 1 && <button onClick={clearCart}>Clear All</button>}
+      {products.length >= 1 && (
+        <button className="btn" onClick={clearCart}>
+          Clear All
+        </button>
+      )}
+      {products.length >= 1 && (
+        <button className="btn add-margin-top">Checkout</button>
+      )}
     </Modal>
   )
 }

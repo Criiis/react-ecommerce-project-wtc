@@ -14,7 +14,15 @@ button.btn {
   border-radius: 0.3rem;
 }
 
-
-.title  {
+.add-margin-top {
+  margin-top: 0.4rem;
+}
+.add-margin-bottom {
+  margin-bottom: 0.4rem;
+}
+.margin-top-reset {
   margin-top: 0;
+}
+.margin-bottom-reset {
+  margin-bottom: 0;
 }

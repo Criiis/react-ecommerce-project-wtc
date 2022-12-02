@@ -20,7 +20,7 @@ export default function Wishlist({ wishlistHandler }) {
 
   return (
     <Modal clickHandler={wishlistHandler}>
-      <h1 tabIndex="0" className="title" ref={sectionTitle}>
+      <h1 tabIndex="0" className="margin-top-reset" ref={sectionTitle}>
         Wishlist
       </h1>
       {wishlistProducts.length === 0 && (
