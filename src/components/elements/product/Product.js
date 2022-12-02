@@ -3,9 +3,10 @@ import { transformToCurrency } from '../helpers'
 import { useSelector, useDispatch } from 'react-redux'
 import { wishlistAction } from '../../../redux/wishlist'
 import { cartActions } from '../../../redux/cart'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 export default function Product({ product }) {
+  const imageElement = useRef()
   const initialText = 'Add to cart'
   const [addButtonText, setAddButtonText] = useState(initialText)
   const { id, title, price, image } = product
@@ -38,6 +39,10 @@ export default function Product({ product }) {
     }, 1000)
   }
 
+  const loadingImageController = () => {
+    imageElement.current.classList.remove('loading')
+  }
+
   //select if it should be add btn or the remove button
   //wonder if there is any way to improve this functionality
   const wishlistButtonController =
@@ -62,7 +67,13 @@ export default function Product({ product }) {
   return (
     <div className={styles.productCard}>
       <div className={styles.productCardImage}>
-        <img src={image} alt={title} />
+        <img
+          className="loading"
+          src={image}
+          alt={title}
+          ref={imageElement}
+          onLoad={loadingImageController}
+        />
       </div>
       <p className={styles.productName}>{title}</p>
       <p className={styles.ProductPrice}>{transformToCurrency(price)}</p>
