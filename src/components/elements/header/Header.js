@@ -10,7 +10,7 @@ export default function Header({ wishlistHandler, cartHandler }) {
         <li
           className={styles.navIcon}
           onClick={wishlistHandler}
-          aria-label="open wishlist"
+          aria-label="open wishlist section"
           role="button"
         >
           <WishlistIcon className={styles.iconCounter} />
@@ -20,7 +20,7 @@ export default function Header({ wishlistHandler, cartHandler }) {
         <li
           className={styles.navIcon}
           onClick={cartHandler}
-          aria-label="open cart"
+          aria-label="open cart section"
           role="button"
         >
           <CartIcon className={styles.iconCounter} />
