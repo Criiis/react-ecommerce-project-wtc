@@ -3,7 +3,7 @@ import { transformToCurrency } from '../helpers'
 import { useSelector, useDispatch } from 'react-redux'
 import { wishlistAction } from '../../../redux/wishlist'
 import { cartActions } from '../../../redux/cart'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Product({ product }) {
   const initialText = 'Add to cart'

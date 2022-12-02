@@ -1,9 +1,11 @@
+import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Modal from '../modal/Modal'
 import Product from '../product/Product'
 import styles from './Wishlist.module.css'
 
 export default function Wishlist({ wishlistHandler }) {
+  const sectionTitle = useRef()
   const wishlistProducts = useSelector(
     (state) => state.wishlistReducer.products
   )
@@ -12,9 +14,15 @@ export default function Wishlist({ wishlistHandler }) {
     <Product key={product.id} product={product} />
   ))
 
+  useEffect(() => {
+    sectionTitle.current.focus()
+  }, [])
+
   return (
     <Modal clickHandler={wishlistHandler}>
-      <h1 className="title">Wishlist</h1>
+      <h1 tabIndex="0" className="title" ref={sectionTitle}>
+        Wishlist
+      </h1>
       {wishlistProducts.length === 0 && (
         <p>Your wishlist is currently empty!</p>
       )}
