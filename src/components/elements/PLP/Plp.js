@@ -1,10 +1,11 @@
 import Product from '../product/Product'
 import styles from './Plp.module.css'
-import { fakeAPI } from '../products-api'
+import Loader from '../loader/Loader'
 import { useEffect, useState } from 'react'
 
 export default function Plp() {
-  const [productApi, setProductApi] = useState(fakeAPI)
+  const [loading, setLoading] = useState(true)
+  const [productApi, setProductApi] = useState([])
 
   const fetchProductsAPI = async () => {
     try {
@@ -15,6 +16,8 @@ export default function Plp() {
       setProductApi(products)
     } catch (error) {
       throw new Error(`${error.message}, try again.`)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -26,5 +29,9 @@ export default function Plp() {
     <Product key={product.id} product={product} />
   ))
 
-  return <main className={styles.plpContainer}>{outputData}</main>
+  return (
+    <main className={styles.plpContainer}>
+      {loading ? <Loader /> : outputData}
+    </main>
+  )
 }
