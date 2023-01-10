@@ -11,14 +11,12 @@ export default function Cart({ cartHandler }) {
   const dispatch = useDispatch()
 
   // clear all products from the cart
-  function clearCart(e) {
-    e.preventDefault()
+  function clearCart() {
     dispatch(cartActions.clearCart())
   }
 
   //remove products
-  const removeProductFromCartHandler = (e, id) => {
-    e.preventDefault()
+  const removeProductFromCartHandler = ( id) => {
     dispatch(cartActions.removeFromCart(id))
   }
 
@@ -38,7 +36,7 @@ export default function Cart({ cartHandler }) {
           </div>
           <button
             className="btn"
-            onClick={(e) => removeProductFromCartHandler(e, id)}
+            onClick={() => removeProductFromCartHandler(id)}
           >
             Remove Item
           </button>

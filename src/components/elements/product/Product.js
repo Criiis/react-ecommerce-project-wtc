@@ -16,20 +16,17 @@ export default function Product({ product }) {
   )
 
   //add to wishlist functionality
-  const addWishlistHandler = (e) => {
-    e.preventDefault()
+  const addWishlistHandler = () => {
     dispatch(wishlistAction.addToWishlist(product))
   }
 
   //remove to wishlist functionality
-  const removeWishlistHandler = (e) => {
-    e.preventDefault()
+  const removeWishlistHandler = () => {
     dispatch(wishlistAction.removeFromWishlist(id))
   }
 
   //cart State
-  const addProductToCartHandler = (e) => {
-    e.preventDefault()
+  const addProductToCartHandler = () => {
     if (addButtonText !== initialText) return
     dispatch(cartActions.addToCart({ product, quantity: 1 }))
 
