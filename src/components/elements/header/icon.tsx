@@ -1,13 +1,13 @@
-import React from 'react'; // we need this to make JSX compile
 import { useSelector } from 'react-redux'
+import GeneralState from '../../../state.d'
 
 type IconsProps = {
   className: string
-} 
+}
 
-export const WishlistIcon = ({className}: IconsProps):JSX.Element => {
+export const WishlistIcon = ({ className }: IconsProps): JSX.Element => {
   const wishlistProducts = useSelector(
-    (state: any) => state.wishlistReducer.products
+    (state: GeneralState) => state.wishlistReducer.products
   )
 
   return (
@@ -34,11 +34,13 @@ export const WishlistIcon = ({className}: IconsProps):JSX.Element => {
   )
 }
 
-export const CartIcon = ({className}: IconsProps):JSX.Element => {
-  const products = useSelector((state:any) => state.cartReducer.products)
+export const CartIcon = ({ className }: IconsProps): JSX.Element => {
+  const products = useSelector(
+    (state: GeneralState) => state.cartReducer.products
+  )
 
   const numberOfItems = products.reduce(
-    (previousValue:any, currentValue : any) => previousValue + currentValue.quantity,
+    (previousValue, currentValue) => previousValue + currentValue.quantity,
     0
   )
 
