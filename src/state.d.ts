@@ -4,19 +4,19 @@ export default interface GeneralState {
 }
 
 //wishlist reducer for state
-interface wishlistReducer {
+export interface wishlistReducer {
   products: product[]
   wishlistPopUpController: boolean
 }
 
 //cart reducer for state
-interface cartReducer {
+export interface cartReducer {
   products: productCart[]
   totalAmount: number
   cartPopUpController: boolean
 }
 
-interface productCart extends product {
+export interface productCart extends product {
   quantity: number
 }
 
