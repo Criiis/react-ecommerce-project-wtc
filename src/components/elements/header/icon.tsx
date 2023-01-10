@@ -1,8 +1,13 @@
+import React from 'react'; // we need this to make JSX compile
 import { useSelector } from 'react-redux'
 
-export function WishlistIcon(props) {
+type IconsProps = {
+  className: string
+} 
+
+export const WishlistIcon = ({className}: IconsProps):JSX.Element => {
   const wishlistProducts = useSelector(
-    (state) => state.wishlistReducer.products
+    (state: any) => state.wishlistReducer.products
   )
 
   return (
@@ -21,7 +26,7 @@ export function WishlistIcon(props) {
         />
       </svg>
       {wishlistProducts.length > 0 && (
-        <span className={props.className} aria-hidden="true">
+        <span className={className} aria-hidden="true">
           {wishlistProducts.length}
         </span>
       )}
@@ -29,11 +34,11 @@ export function WishlistIcon(props) {
   )
 }
 
-export function CartIcon(props) {
-  const products = useSelector((state) => state.cartReducer.products)
+export const CartIcon = ({className}: IconsProps):JSX.Element => {
+  const products = useSelector((state:any) => state.cartReducer.products)
 
   const numberOfItems = products.reduce(
-    (previousValue, currentValue) => previousValue + currentValue.quantity,
+    (previousValue:any, currentValue : any) => previousValue + currentValue.quantity,
     0
   )
 
@@ -70,7 +75,7 @@ export function CartIcon(props) {
         </defs>
       </svg>
       {numberOfItems > 0 && (
-        <span className={props.className} aria-hidden="true">
+        <span className={className} aria-hidden="true">
           {numberOfItems}
         </span>
       )}
