@@ -5,7 +5,7 @@ type IconsProps = {
   className: string
 }
 
-export const WishlistIcon = ({ className }: IconsProps): JSX.Element => {
+export const WishlistIcon = ({ className }: IconsProps) => {
   const wishlistProducts = useSelector(
     (state: GeneralState) => state.wishlistReducer.products
   )
@@ -34,7 +34,7 @@ export const WishlistIcon = ({ className }: IconsProps): JSX.Element => {
   )
 }
 
-export const CartIcon = ({ className }: IconsProps): JSX.Element => {
+export const CartIcon = ({ className }: IconsProps) => {
   const products = useSelector(
     (state: GeneralState) => state.cartReducer.products
   )

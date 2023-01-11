@@ -6,7 +6,7 @@ type HeaderProps = {
   cartHandler: any //should be a function void to control the popup
 }
 
-const Header = ({ wishlistHandler, cartHandler }: HeaderProps): JSX.Element => {
+const Header = ({ wishlistHandler, cartHandler }: HeaderProps) => {
   return (
     <div className={styles.header}>
       <h1>React Shop</h1>
