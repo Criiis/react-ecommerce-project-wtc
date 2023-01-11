@@ -4,10 +4,17 @@ import { transformToCurrency } from '../helpers'
 import styles from './Cart.module.css'
 import Modal from '../modal/Modal'
 import { useEffect, useRef } from 'react'
+import GeneralState from '../../../state'
 
-export default function Cart({ cartHandler }) {
-  const { products, totalAmount } = useSelector((state) => state.cartReducer)
-  const sectionTitle = useRef()
+type CartProps = {
+  cartHandler: () => void
+}
+
+export default function Cart({ cartHandler }: CartProps) {
+  const { products, totalAmount } = useSelector(
+    (state: GeneralState) => state.cartReducer
+  )
+  const sectionTitle = useRef<HTMLHeadingElement>(null)
   const dispatch = useDispatch()
 
   // clear all products from the cart
@@ -16,7 +23,7 @@ export default function Cart({ cartHandler }) {
   }
 
   //remove products
-  const removeProductFromCartHandler = ( id) => {
+  const removeProductFromCartHandler = (id: number) => {
     dispatch(cartActions.removeFromCart(id))
   }
 
@@ -46,12 +53,12 @@ export default function Cart({ cartHandler }) {
   )
 
   useEffect(() => {
-    sectionTitle.current.focus()
+    if (sectionTitle.current) sectionTitle.current.focus()
   }, [])
 
   return (
     <Modal clickHandler={cartHandler}>
-      <h1 tabIndex="0" className="margin-top-reset" ref={sectionTitle}>
+      <h1 tabIndex={0} className="margin-top-reset" ref={sectionTitle}>
         Cart
       </h1>
       <div>
@@ -59,13 +66,17 @@ export default function Cart({ cartHandler }) {
         {productsOutput}
       </div>
       <p>Total: {transformToCurrency(totalAmount)}</p>
-      {products.length >= 1 && (
+      {products.length >= 1 ? (
         <button className="btn" onClick={clearCart}>
           Clear All
         </button>
+      ) : (
+        <></>
       )}
-      {products.length >= 1 && (
+      {products.length >= 1 ? (
         <button className="btn add-margin-top">Checkout</button>
+      ) : (
+        <></>
       )}
     </Modal>
   )
