@@ -6,10 +6,7 @@
 export const transformToCurrency = (value: string | number) => {
   const valueToNumber = typeof value === 'string' ? +value.trim() : +value
 
-  if (isNaN(valueToNumber))
-    return console.warn(
-      `Something is wrong with ur transformToCurrency value ${valueToNumber}.`
-    )
+  if (isNaN(valueToNumber)) return 'something went wrong'
 
   return new Intl.NumberFormat('default', {
     style: 'currency',
