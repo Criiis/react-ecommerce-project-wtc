@@ -1,18 +1,23 @@
+import { useRef, useState } from 'react'
 import styles from './Product.module.css'
 import { transformToCurrency } from '../helpers'
 import { useSelector, useDispatch } from 'react-redux'
 import { wishlistAction } from '../../../redux/wishlist'
 import { cartActions } from '../../../redux/cart'
-import { useRef, useState } from 'react'
+import GeneralState, { product } from '../../../state'
 
-export default function Product({ product }) {
-  const imageElement = useRef()
+type ProductProps = {
+  product: product
+}
+
+export default function Product({ product }: ProductProps) {
+  const imageElement = useRef<HTMLImageElement>(null)
   const initialText = 'Add to cart'
   const [addButtonText, setAddButtonText] = useState(initialText)
   const { id, title, price, image } = product
   const dispatch = useDispatch()
   const wishlistProducts = useSelector(
-    (state) => state.wishlistReducer.products
+    (state: GeneralState) => state.wishlistReducer.products
   )
 
   //add to wishlist functionality
@@ -37,7 +42,7 @@ export default function Product({ product }) {
   }
 
   const loadingImageController = () => {
-    imageElement.current.classList.remove('loading')
+    if (imageElement.current) imageElement.current.classList.remove('loading')
   }
 
   //select if it should be add btn or the remove button
