@@ -3,11 +3,16 @@ import { useSelector } from 'react-redux'
 import Modal from '../modal/Modal'
 import Product from '../product/Product'
 import styles from './Wishlist.module.css'
+import GeneralState from '../../../state'
 
-export default function Wishlist({ wishlistHandler }) {
-  const sectionTitle = useRef()
+type WishlistProps = {
+  wishlistHandler: () => void
+}
+
+export default function Wishlist({ wishlistHandler }: WishlistProps) {
+  const sectionTitle = useRef<HTMLHeadingElement>(null)
   const wishlistProducts = useSelector(
-    (state) => state.wishlistReducer.products
+    (state: GeneralState) => state.wishlistReducer.products
   )
 
   const outputWishedProducts = wishlistProducts?.map((product) => (
@@ -15,16 +20,19 @@ export default function Wishlist({ wishlistHandler }) {
   ))
 
   useEffect(() => {
-    sectionTitle.current.focus()
+    if (sectionTitle.current) sectionTitle.current.focus()
   }, [])
 
   return (
     <Modal clickHandler={wishlistHandler}>
-      <h1 tabIndex="0" className="margin-top-reset" ref={sectionTitle}>
+      <h1 tabIndex={0} className="margin-top-reset" ref={sectionTitle}>
         Wishlist
       </h1>
-      {wishlistProducts.length === 0 && (
+
+      {wishlistProducts.length === 0 ? (
         <p>Your wishlist is currently empty!</p>
+      ) : (
+        <></>
       )}
       <div className={styles.productContainer}>{outputWishedProducts}</div>
     </Modal>
