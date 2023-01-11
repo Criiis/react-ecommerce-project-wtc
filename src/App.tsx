@@ -9,7 +9,7 @@ import './main.css'
 import Footer from './components/elements/footer/Footer'
 import { AppDispatch, RootState } from './redux'
 
-function App() {
+const App = () => {
   const dispatch: AppDispatch = useDispatch()
   const wishlistController = useSelector(
     ({ wishlistReducer }: RootState) => wishlistReducer.wishlistPopUpController

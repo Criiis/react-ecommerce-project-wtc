@@ -10,7 +10,7 @@ type CartProps = {
   cartHandler: () => void
 }
 
-export default function Cart({ cartHandler }: CartProps) {
+const Cart = ({ cartHandler }: CartProps) => {
   const { products, totalAmount } = useSelector(
     (state: RootState) => state.cartReducer
   )
@@ -81,3 +81,4 @@ export default function Cart({ cartHandler }: CartProps) {
     </Modal>
   )
 }
+export default Cart

@@ -4,7 +4,7 @@ import styles from './Plp.module.css'
 import Loader from '../loader/Loader'
 import { product } from '../../../state'
 
-export default function Plp() {
+const Plp = () => {
   const [loading, setLoading] = useState(true)
   const [productApi, setProductApi] = useState<product[]>([])
 
@@ -36,3 +36,5 @@ export default function Plp() {
     </main>
   )
 }
+
+export default Plp

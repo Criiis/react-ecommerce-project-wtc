@@ -9,7 +9,7 @@ type WishlistProps = {
   wishlistHandler: () => void
 }
 
-export default function Wishlist({ wishlistHandler }: WishlistProps) {
+const Wishlist = ({ wishlistHandler }: WishlistProps) => {
   const sectionTitle = useRef<HTMLHeadingElement>(null)
   const wishlistProducts = useSelector(
     ({ wishlistReducer }: RootState) => wishlistReducer.products
@@ -38,3 +38,5 @@ export default function Wishlist({ wishlistHandler }: WishlistProps) {
     </Modal>
   )
 }
+
+export default Wishlist

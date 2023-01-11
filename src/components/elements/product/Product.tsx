@@ -11,7 +11,7 @@ type ProductProps = {
   product: product
 }
 
-export default function Product({ product }: ProductProps) {
+const Product = ({ product }: ProductProps) => {
   const imageElement = useRef<HTMLImageElement>(null)
   const initialText = 'Add to cart'
   const [addButtonText, setAddButtonText] = useState(initialText)
@@ -117,3 +117,5 @@ const wishlistedIcon = (
     />
   </svg>
 )
+
+export default Product
