@@ -1,9 +1,14 @@
 import ReactDOM from 'react-dom'
 import styles from './Modal.module.css'
 
-const portalElement = document.querySelector('#overlays') //'../../../../public/index.html'
+const portalElement = document.querySelector('#overlays')! //'../../../../public/index.html'
 
-function Backdrop({ clickHandler, children }) {
+type BackdropProps = {
+  clickHandler: () => void
+  children?: JSX.Element | JSX.Element[]
+}
+
+const Backdrop = ({ clickHandler, children }: BackdropProps) => {
   return (
     <div
       className={styles.backdrop}
@@ -16,7 +21,10 @@ function Backdrop({ clickHandler, children }) {
   )
 }
 
-function ModalOverlay({ children }) {
+type ModalOverlayProps = {
+  children: JSX.Element | JSX.Element[]
+}
+const ModalOverlay = ({ children }: ModalOverlayProps) => {
   return (
     <div className={styles.modal}>
       <div className="content">{children}</div>
@@ -24,7 +32,11 @@ function ModalOverlay({ children }) {
   )
 }
 
-export default function Modal({ clickHandler, children }) {
+type ModalProps = {
+  clickHandler: () => void
+  children: JSX.Element | JSX.Element[]
+}
+const Modal = ({ clickHandler, children }: ModalProps) => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -38,3 +50,4 @@ export default function Modal({ clickHandler, children }) {
     </>
   )
 }
+export default Modal
