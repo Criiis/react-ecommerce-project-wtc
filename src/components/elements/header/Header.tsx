@@ -2,8 +2,8 @@ import styles from './Header.module.css'
 import { WishlistIcon, CartIcon } from './icon'
 
 type HeaderProps = {
-  wishlistHandler: any //should be a function void to control the popup
-  cartHandler: any //should be a function void to control the popup
+  wishlistHandler: () => void
+  cartHandler: () => void
 }
 
 const Header = ({ wishlistHandler, cartHandler }: HeaderProps) => {

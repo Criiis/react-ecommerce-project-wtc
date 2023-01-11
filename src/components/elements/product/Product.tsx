@@ -4,7 +4,8 @@ import { transformToCurrency } from '../helpers'
 import { useSelector, useDispatch } from 'react-redux'
 import { wishlistAction } from '../../../redux/wishlist'
 import { cartActions } from '../../../redux/cart'
-import GeneralState, { product } from '../../../state'
+import { product } from '../../../state'
+import { AppDispatch, RootState } from '../../../redux'
 
 type ProductProps = {
   product: product
@@ -15,9 +16,9 @@ export default function Product({ product }: ProductProps) {
   const initialText = 'Add to cart'
   const [addButtonText, setAddButtonText] = useState(initialText)
   const { id, title, price, image } = product
-  const dispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch()
   const wishlistProducts = useSelector(
-    (state: GeneralState) => state.wishlistReducer.products
+    ({ wishlistReducer }: RootState) => wishlistReducer.products
   )
 
   //add to wishlist functionality

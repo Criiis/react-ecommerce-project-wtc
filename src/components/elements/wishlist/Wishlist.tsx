@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Modal from '../modal/Modal'
 import Product from '../product/Product'
 import styles from './Wishlist.module.css'
-import GeneralState from '../../../state'
+import { RootState } from '../../../redux'
 
 type WishlistProps = {
   wishlistHandler: () => void
@@ -12,7 +12,7 @@ type WishlistProps = {
 export default function Wishlist({ wishlistHandler }: WishlistProps) {
   const sectionTitle = useRef<HTMLHeadingElement>(null)
   const wishlistProducts = useSelector(
-    (state: GeneralState) => state.wishlistReducer.products
+    ({ wishlistReducer }: RootState) => wishlistReducer.products
   )
 
   const outputWishedProducts = wishlistProducts?.map((product) => (

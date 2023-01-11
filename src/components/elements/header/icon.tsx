@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import GeneralState from '../../../state.d'
+import { RootState } from '../../../redux'
 
 type IconsProps = {
   className: string
@@ -7,7 +7,7 @@ type IconsProps = {
 
 export const WishlistIcon = ({ className }: IconsProps) => {
   const wishlistProducts = useSelector(
-    (state: GeneralState) => state.wishlistReducer.products
+    ({ wishlistReducer }: RootState) => wishlistReducer.products
   )
 
   return (
@@ -36,11 +36,11 @@ export const WishlistIcon = ({ className }: IconsProps) => {
 
 export const CartIcon = ({ className }: IconsProps) => {
   const products = useSelector(
-    (state: GeneralState) => state.cartReducer.products
+    ({ cartReducer }: RootState) => cartReducer.products
   )
 
   const numberOfItems = products.reduce(
-    (previousValue, currentValue) => previousValue + currentValue.quantity,
+    (previousValue, { quantity }) => previousValue + quantity,
     0
   )
 

@@ -4,7 +4,7 @@ import { transformToCurrency } from '../helpers'
 import styles from './Cart.module.css'
 import Modal from '../modal/Modal'
 import { useEffect, useRef } from 'react'
-import GeneralState from '../../../state'
+import { AppDispatch, RootState } from '../../../redux'
 
 type CartProps = {
   cartHandler: () => void
@@ -12,10 +12,10 @@ type CartProps = {
 
 export default function Cart({ cartHandler }: CartProps) {
   const { products, totalAmount } = useSelector(
-    (state: GeneralState) => state.cartReducer
+    (state: RootState) => state.cartReducer
   )
   const sectionTitle = useRef<HTMLHeadingElement>(null)
-  const dispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch()
 
   // clear all products from the cart
   function clearCart() {

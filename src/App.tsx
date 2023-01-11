@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import Header from './components/elements/header/Header.tsx'
+import Header from './components/elements/header/Header'
 import { wishlistAction } from './redux/wishlist'
 import { cartActions } from './redux/cart'
 import Cart from './components/elements/cart/Cart'
@@ -7,15 +7,16 @@ import Plp from './components/elements/PLP/Plp'
 import Wishlist from './components/elements/wishlist/Wishlist'
 import './main.css'
 import Footer from './components/elements/footer/Footer'
+import { AppDispatch, RootState } from './redux'
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch()
   const wishlistController = useSelector(
-    (state) => state.wishlistReducer.wishlistPopUpController
+    ({ wishlistReducer }: RootState) => wishlistReducer.wishlistPopUpController
   )
 
   const cartController = useSelector(
-    (state) => state.cartReducer.cartPopUpController
+    ({ cartReducer }: RootState) => cartReducer.cartPopUpController
   )
 
   const wishlistHandlerFunction = () => {
