@@ -8,7 +8,7 @@ type HeaderProps = {
 
 const Header = ({ wishlistHandler, cartHandler }: HeaderProps) => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <h1>React Shop</h1>
 
       <nav>
@@ -34,7 +34,7 @@ const Header = ({ wishlistHandler, cartHandler }: HeaderProps) => {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   )
 }
 export default Header

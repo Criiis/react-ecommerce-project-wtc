@@ -1,7 +1,9 @@
 import styles from './Footer.module.css'
 
 const Footer = () => {
-  return <div className={styles.footer}>With Love from Cristiano Luis!</div>
+  return (
+    <footer className={styles.footer}>With Love from Cristiano Luis!</footer>
+  )
 }
 
 export default Footer
