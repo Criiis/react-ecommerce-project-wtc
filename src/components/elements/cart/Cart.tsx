@@ -38,9 +38,9 @@ const Cart = ({ cartHandler }: CartProps) => {
               {transformToCurrency(price)} x{quantity}
             </p>
           </div>
-          <div className={styles.productCardImages}>
+          <figure className={styles.productCardImages}>
             <img src={image} alt={title} />
-          </div>
+          </figure>
           <button
             className="btn"
             onClick={() => removeProductFromCartHandler(id)}

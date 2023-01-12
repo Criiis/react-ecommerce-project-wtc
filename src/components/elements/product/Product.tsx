@@ -69,7 +69,7 @@ const Product = ({ product }: ProductProps) => {
 
   return (
     <div className={styles.productCard}>
-      <div className={styles.productCardImage}>
+      <figure className={styles.productCardImage}>
         <img
           className="loading"
           src={image}
@@ -77,7 +77,7 @@ const Product = ({ product }: ProductProps) => {
           ref={imageElement}
           onLoad={loadingImageController}
         />
-      </div>
+      </figure>
       <p className={styles.productName}>{title}</p>
       <p className={styles.ProductPrice}>{transformToCurrency(price)}</p>
       {wishlistButtonController}

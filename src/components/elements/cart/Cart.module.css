@@ -16,6 +16,7 @@
 }
 .productCardImages {
   flex-basis: 20%;
+  margin: 0;
 }
 .productCardImages img {
   width: 100%;
