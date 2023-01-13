@@ -2,7 +2,9 @@ import styles from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>With Love from Cristiano Luis!</footer>
+    <footer role="footer" className={styles.footer}>
+      <p>With Love from Cristiano Luis!</p>
+    </footer>
   )
 }
 
