@@ -1,7 +1,10 @@
 import ReactDOM from 'react-dom'
 import styles from './Modal.module.css'
+import { useEffect } from 'react'
 
-const portalElement = document.querySelector('#overlays')! //'../../../../public/index.html'
+const modalRoot = document.createElement('div')
+modalRoot.setAttribute('id', 'overlays')
+document.body.appendChild(modalRoot)
 
 type BackdropProps = {
   clickHandler: () => void
@@ -36,17 +39,21 @@ type ModalProps = {
   clickHandler: () => void
   children: JSX.Element | JSX.Element[]
 }
+
 const Modal = ({ clickHandler, children }: ModalProps) => {
+  const el = document.createElement('div')
+
+  useEffect(() => {
+    modalRoot.appendChild(el)
+    return () => {
+      modalRoot.removeChild(el)
+    }
+  }, [el])
+
   return (
     <>
-      {ReactDOM.createPortal(
-        <Backdrop clickHandler={clickHandler} />,
-        portalElement
-      )}
-      {ReactDOM.createPortal(
-        <ModalOverlay>{children}</ModalOverlay>,
-        portalElement
-      )}
+      {ReactDOM.createPortal(<Backdrop clickHandler={clickHandler} />, el)}
+      {ReactDOM.createPortal(<ModalOverlay>{children}</ModalOverlay>, el)}
     </>
   )
 }
